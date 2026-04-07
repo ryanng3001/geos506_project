@@ -7,9 +7,9 @@
 metainfo <- read.csv("metainfo.csv")
 
 # linear regression for latitude x suitability 
-lm_lat_suit <- lm(latitude ~ suitability, data = metainfo)
+lm_lat_suit <- lm(suitability ~ latitude, data = metainfo)
 summary(lm_lat_suit)
-ggplot(metainfo, aes(x = suitability, y = latitude, color = Range)) +
+ggplot(metainfo, aes(x = latitude, y = suitability, color = Range)) +
   geom_smooth(method = "lm", se = TRUE, aes(group = 1),
               linetype = "dashed", color = "black") +  
   geom_point(size = 5) +                          
@@ -28,8 +28,8 @@ ggplot(metainfo, aes(x = suitability, y = latitude, color = Range)) +
     legend.text  = element_text(size = 20)
   ) +
   labs(
-    x = "Suitability",
-    y = "Latitude (°)",
+    x = "Latitude (°)",
+    y = "Suitability",
     color = "Range"
   )
 
